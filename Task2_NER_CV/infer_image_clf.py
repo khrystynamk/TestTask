@@ -1,11 +1,9 @@
 import argparse
 import torch
-from PIL import Image
 import torchvision.transforms as transforms
-import torchvision.models as models
-import torch.nn as nn
 import torchvision.datasets as datasets
 import torch
+from PIL import Image
 
 
 def parse_args():
@@ -33,9 +31,11 @@ def parse_args():
 def preprocess_image(image_path):
     transform = transforms.Compose(
         [
-            transforms.Resize((224, 224)), # image size for ResNet50
-            transforms.ToTensor(), # normalize pizel values to [0, 1]
-            transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]), # zero-mean, unit-variance
+            transforms.Resize((224, 224)),  # image size for ResNet50
+            transforms.ToTensor(),  # normalize pixel values to [0, 1]
+            transforms.Normalize(
+                [0.485, 0.456, 0.406], [0.229, 0.224, 0.225]
+            ),  # zero-mean, unit-variance
         ]
     )
     image = Image.open(image_path).convert("RGB")
@@ -45,10 +45,6 @@ def preprocess_image(image_path):
 def infer_image_classifier(args):
     dataset = datasets.ImageFolder(root=args.data_dir)
     class_names = dataset.classes
-
-    model = models.resnet50(pretrained=False)
-    num_features = model.fc.in_features
-    model.fc = nn.Linear(num_features, len(class_names)) # adjust number of output labels
 
     model.load_state_dict(torch.load(args.model_path))
     model.eval()

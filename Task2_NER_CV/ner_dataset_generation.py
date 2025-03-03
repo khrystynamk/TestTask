@@ -1,6 +1,5 @@
 import json
 from transformers import AutoTokenizer
-from datasets import load_dataset
 
 # animal entities from the Animal-10 dataset
 tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")

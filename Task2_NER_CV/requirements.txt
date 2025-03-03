@@ -1,5 +1,5 @@
-datasets==3.3.2
+datasets==2.19.1
 Pillow==11.1.0
 torch==2.3.1
 torchvision==0.18.1a0
-transformers==4.49.0
+transformers==4.45.2

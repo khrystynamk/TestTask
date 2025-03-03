@@ -1,6 +1,6 @@
 # Task1_MNIST
 
-This repository contains code for training and using various classifiers on the MNIST dataset, as well as some additional helper functions and interfaces.
+This folder contains code for training and using various classifiers on the MNIST dataset, as well as some additional helper functions and interfaces.
 
 ## Class Descriptions
 
@@ -25,3 +25,4 @@ To install the dependencies, use the following command:
 
 ```bash
 pip install -r requirements.txt
+```
